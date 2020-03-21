@@ -289,7 +289,7 @@ class MyPosition_Plugin implements Typecho_Plugin_Interface
 	    echo "<script src=\"{$home}/js/addPosition.js\"></script>";
 	    echo "<script src=\"{$home}/js/addStr.js\"></script>";
 	    echo "<script src=\"{$home}/js/addButton.js\"></script>";
-	} else if($set->type == 1){
+	} else {
 		//usetype=1,自动插入方式
 		MyPosition_Plugin::getSdk();
 	    ?><script src="<?echo $home?>/js/addPosition.js"></script>
