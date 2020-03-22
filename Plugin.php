@@ -3,7 +3,7 @@
  * 写作时自动定位当前地理位置
  * @package #南喵写作定位#
  * @author 南城猫
- * @version 3.5.8
+ * @version 3.5.9
  * @link http://es.ip3x.com
  * 支持学习，讽刺盗改
  */
@@ -163,6 +163,7 @@ class MyPosition_Plugin implements Typecho_Plugin_Interface
     echo '<a onclick="window.open(\'http://lbsyun.baidu.com\')" style="padding:5px">百度地图Key申请</a>'; 
 	echo '<br><span><strong>注意1：</strong>请在使用南喵写作定位插件时完全关闭所有网络代理，并确保设备本身支持定位，否则可能得到错误地址</span>';
 	echo '<br><span><strong>注意2：</strong>key请点击上方链接去相应网站申请，若不填写则默认免费使用开发者的Key(不保证稳定有效)</span>';
+	echo '<br><span><strong>注意3：</strong>通过自行设置解析HTML、Style并将短代码插入需要的位置，可以实现自己想要的效果（如果你看不懂某些内容，那么保持默认就好）</span>';
     }
   // 用户个人设置
   public static function personalConfig(Typecho_Widget_Helper_Form $form){}
@@ -336,7 +337,8 @@ class MyPosition_Plugin implements Typecho_Plugin_Interface
 		    var begin='<?php echo (Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->start == null)?'<div><span>位置 : ':Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->start?>';
 		    var end='<?php echo (Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->end == null)?'</span></div>':Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->end?>';
 		    myposx=begin+myposx+end;
-		    $("pos").prop("outerHTML",myposx);
+		    //$("pos").prop("outerHTML",myposx);
+		    $("pos").before(myposx);
     	}
 	});
     </script><?php
