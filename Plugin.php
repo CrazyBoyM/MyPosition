@@ -3,7 +3,7 @@
  * 写作时自动定位当前地理位置
  * @package #南喵写作定位#
  * @author 南城猫
- * @version 3.5.6
+ * @version 3.5.8
  * @link http://es.ip3x.com
  * 支持学习，讽刺盗改
  */
@@ -332,12 +332,14 @@ class MyPosition_Plugin implements Typecho_Plugin_Interface
   	$home = Helper::options()->pluginUrl.'/MyPosition';?>
     <script>
     $(document).ready(function(){
-	    var begin='<?php echo (Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->start == null)?'<div><span>位置 : ':Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->start?>';
-	    var end='<?php echo (Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->end == null)?'</span></div>':Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->end?>';
-	    myposx=begin+myposx+end;
-	    $("pos").prop("outerHTML",myposx);
+    	if(typeof myposx != "undefined"){
+		    var begin='<?php echo (Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->start == null)?'<div><span>位置 : ':Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->start?>';
+		    var end='<?php echo (Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->end == null)?'</span></div>':Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->end?>';
+		    myposx=begin+myposx+end;
+		    $("pos").prop("outerHTML",myposx);
+    	}
 	});
-    </script>";<?php
+    </script><?php
   }
   public static function header(){
     if(Typecho_Widget::widget('Widget_Options')->plugin('MyPosition')->start != null){
